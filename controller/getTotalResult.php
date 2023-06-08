@@ -22,7 +22,7 @@ require_once('../model/connection.php');
        }
 
        if($result){
-           $success = urlencode('The total result for '.$name. ' L.G.A is '.$total);
+           $success = urlencode('The total result: '.$total. ' Voters');
            header('location: ../totalResult.php?success='.$success);
        }
        

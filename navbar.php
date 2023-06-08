@@ -11,7 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Polling Unit Result</a>
+                    <a class="nav-link" href="./totalResult.php">Polling Unit Result</a>
                 </li>
 
                 <li class="nav-item">

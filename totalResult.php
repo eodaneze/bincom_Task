@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once('./model/connection.php');
+$title = "All polling unit results";
+require_once('./header.php');
+require_once('./navbar.php');
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--boostrap cdn link  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+?>
 
-    <!--end of boostrap cdn link  -->
-    <title>Document</title>
-</head>
-
-<body>
-    <form action="./controller/getTotalResult.php" method="post">
-        <select name="lga" id="" class="form-control">
-            <option>Select L.G.A</option>
-            <?php
-            require_once('./model/connection.php');
+<body style="background-color: #38405A;">
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+        <div class="container">
+            <form action="./controller/getTotalResult.php" method="post">
+                <select name="lga" id="" class="form-control">
+                    <option>Select L.G.A</option>
+                    <?php
              $sql = "SELECT lga_id, lga_name FROM lga";
             $result = mysqli_query($con, $sql);
             while($row = mysqli_fetch_assoc($result)){
@@ -27,29 +21,37 @@
                
                 ?>
 
-            <option value="<?=$id?>"><?=$name?></option>
-            <?php
+                    <option value="<?=$id?>"><?=$name?></option>
+                    <?php
             }
             ?>
-            <!-- <input type="hidden" name="id" value="<?=$id?>"> -->
+                    <!-- <input type="hidden" name="id" value="<?=$id?>"> -->
 
-        </select>
-        <button name="submit">Submit</button>
+                </select>
+                <div class="my-4 text-center">
+                    <button class="btn btn-light" name="submit">Submit</button>
+                </div>
 
-        <?php
+                <?php
             if(isset($_GET['success'])){
                  ?>
-        <div class="container alert alert-success"><?=urldecode($_GET['success'])?></div>
+                <div class="bg-white border shadow p-3">
+                    <p><?=urldecode($_GET['success'])?></p>
+                </div>
 
-        <?php
+                <?php
             }
 
 ?>
-    </form>
+            </form>
+        </div>
+    </div>
 </body>
 
 
 
-
+<?php
+ require_once('./footer.php')
+?>
 
 </html>
