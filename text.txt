@@ -1,0 +1,35 @@
+  <div class="container border p-3 shadow">
+        <h4 class="text-center">Result for anocha north polling unit</h4>
+        <div class="table-responsive">
+            <table class="table borderless">
+                <tr>
+                    <th>S/N</th>
+                    <th>Party Name</th>
+                    <th>Party Result</th>
+                </tr>
+            </table>
+            <tbody>
+                <?php
+
+                  $sql = "SELECT * FROM announced_pu_results WHERE polling_unit_uniqueid = 8";
+                  $result = mysqli_query($con, $sql);
+                  $num = 1;
+                  while($row = mysqli_fetch_assoc($result)){
+     
+                  $score = $row['party_score'];
+                   $party_name = $row['party_abbreviation'];
+                 ?>
+                <tr>
+                    <td><?=$num++?></td>
+                    <td><?=$score?></td>
+                </tr>
+
+                <?php
+ }
+
+
+?>
+            </tbody>
+        </div>
+
+    </div>
